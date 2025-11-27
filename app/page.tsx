@@ -440,7 +440,7 @@ export default function Home() {
               >
                 Send Message
               </button>
-              <a href="mailto:your-email@example.com" className="px-8 py-3 border border-blue-400 rounded-lg font-semibold hover:bg-blue-400/10 transition duration-300 transform hover:scale-105">
+              <a href="mailto:mohamedhossam4work@gmail.com" className="px-8 py-3 border border-blue-400 rounded-lg font-semibold hover:bg-blue-400/10 transition duration-300 transform hover:scale-105">
                 Email Me Directly
               </a>
             </div>
