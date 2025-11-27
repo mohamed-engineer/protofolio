@@ -371,7 +371,7 @@ export default function Home() {
         </p>
         
         <div className="max-w-2xl mx-auto bg-slate-800/30 rounded-lg p-8 border border-blue-400/30 backdrop-blur-sm animate-slide-up" style={{ animationDelay: '0.2s' }}>
-          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" className="space-y-6">
+          <form action="https://formspree.io/f/xzzlgeqk" method="POST" className="space-y-6">
             {/* Name Field */}
             <div className="animate-slide-up" style={{ animationDelay: '0.3s' }}>
               <label htmlFor="name" className="block text-sm font-semibold text-blue-300 mb-2">
