@@ -310,7 +310,7 @@ export default function Home() {
                 Leading a dynamic tech company focused on delivering cutting-edge web solutions and digital innovations. 
                 Provix Tech specializes in MERN stack development, creating scalable applications that drive business growth.
               </p>
-              <a href="https://provixtech.com" className="inline-block px-6 py-2 bg-blue-500/20 border border-blue-400 rounded-lg text-blue-300 hover:bg-blue-500/40 transition duration-300">
+              <a href="https://provix-tech.com" className="inline-block px-6 py-2 bg-blue-500/20 border border-blue-400 rounded-lg text-blue-300 hover:bg-blue-500/40 transition duration-300">
                 Visit Website
               </a>
             </div>
