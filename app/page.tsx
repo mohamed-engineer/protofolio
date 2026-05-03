@@ -1,5 +1,5 @@
 'use client';
-
+import CertificatesSlider from "./components/certificatesSlider";
 import Contact from "./components/form";
 import Hero from "./components/header";
 import Organizations from "./components/org";
@@ -21,8 +21,7 @@ export default function Home() {
 <Skills />
       {/* Organizations Section */}
       <Organizations />
-      <Certifications/>
-
+      <CertificatesSlider />
       {/* Contact Section */}
       <Contact />
       {/* Footer */}
