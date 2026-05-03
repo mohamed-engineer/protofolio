@@ -74,7 +74,7 @@ const Hero = () => {
           custom={3} initial="hidden" animate="visible" variants={fadeUp}
           className="flex flex-wrap justify-center gap-4 mb-12"
         >
-          <a href="#organizations" className="px-10 py-4 bg-cyber-cyan text-black font-black rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(0,242,255,0.3)] hover:shadow-white/20 uppercase text-xs tracking-widest">
+          <a href="#organizations" className="px-10 py-4 bg-cyber-cyan text-white font-black rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(0,242,255,0.3)] hover:shadow-white/20 uppercase text-xs tracking-widest">
             View Projects
           </a>
           <a href="mailto:work@mohamed.com" className="px-10 py-4 border border-white/10 bg-white/5 backdrop-blur-md text-white font-black rounded-xl hover:bg-white/10 transition-all uppercase text-xs tracking-widest">
