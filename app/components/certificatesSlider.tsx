@@ -12,7 +12,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
 
 const CertificatesSlider = () => {
-  // حالة للتحكم في الشهادة المختارة للمودال
   const [selectedCert, setSelectedCert] = useState<any>(null);
 
   const certificates = [
@@ -60,10 +59,10 @@ const CertificatesSlider = () => {
           className="w-full py-12"
         >
           {certificates.map((cert, i) => (
-            <SwiperSlide key={i} className="max-w-[400px] group">
+            <SwiperSlide key={i} className="max-w-[320px] md:max-w-[400px] group">
               <motion.div 
                 whileHover={{ scale: 1.02 }}
-                onClick={() => setSelectedCert(cert)} // فتح المودال عند الضغط
+                onClick={() => setSelectedCert(cert)}
                 className="cursor-pointer relative aspect-[4/3] bg-white/5 border border-white/10 rounded-2xl overflow-hidden group-hover:border-cyber-cyan/50 transition-all duration-500"
               >
                 <Image
@@ -72,9 +71,13 @@ const CertificatesSlider = () => {
                   fill
                   className="object-cover opacity-80 group-hover:opacity-100 transition-opacity"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6">
-                  <p className="text-cyber-cyan font-mono text-xs mb-1 tracking-widest">{cert.issuer}</p>
-                  <h4 className="text-white font-bold text-lg leading-tight">{cert.title}</h4>
+                
+                {/* Overlay المطور: يظهر دائماً على الموبايل وعند الهوفر على الكمبيوتر */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-4 md:p-6">
+                  <p className="text-cyber-cyan font-mono text-[10px] md:text-xs mb-1 tracking-widest uppercase">{cert.issuer}</p>
+                  <h4 className="text-white font-bold text-sm md:text-lg leading-tight line-clamp-2">{cert.title}</h4>
+                  {/* سهم صغير للموبايل فقط */}
+                  <span className="md:hidden text-cyber-cyan/60 text-[9px] mt-2 font-mono animate-pulse">TAP TO VIEW →</span>
                 </div>
               </motion.div>
             </SwiperSlide>
@@ -89,64 +92,66 @@ const CertificatesSlider = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md"
-            onClick={() => setSelectedCert(null)} // غلق عند الضغط في أي مكان في الخلفية
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/95 backdrop-blur-md"
+            onClick={() => setSelectedCert(null)}
           >
             <motion.div
-              initial={{ scale: 0.8, y: 50 }}
+              initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.8, y: 50 }}
-              className="relative max-w-4xl w-full bg-[#0a0a0a] border border-white/10 rounded-3xl overflow-hidden shadow-2xl"
-              onClick={(e) => e.stopPropagation()} // منع الغلق عند الضغط داخل الكارت
+              exit={{ scale: 0.9, y: 20 }}
+              className="relative max-w-4xl w-full max-h-[90vh] bg-[#0a0a0a] border border-white/10 rounded-3xl overflow-y-auto shadow-2xl no-scrollbar"
+              onClick={(e) => e.stopPropagation()}
             >
               {/* زر الغلق */}
               <button 
                 onClick={() => setSelectedCert(null)}
-                className="absolute top-6 right-6 z-20 p-2 bg-white/5 hover:bg-white/10 rounded-full text-white/50 hover:text-cyber-cyan transition-all"
+                className="absolute top-4 right-4 md:top-6 md:right-6 z-50 p-3 bg-black/50 hover:bg-white/10 rounded-full text-white/70 hover:text-cyber-cyan transition-all border border-white/5"
               >
-                <FaTimes size={20} />
+                <FaTimes size={18} />
               </button>
 
-              <div className="grid md:grid-cols-2">
-                {/* الجزء الخاص بالصورة */}
-                <div className="relative aspect-[4/3] md:aspect-auto h-[300px] md:h-[500px]">
-                  <Image
-                    src={selectedCert.img}
-                    alt={selectedCert.title}
-                    fill
-                    className="object-contain p-4 md:p-8"
-                  />
+              <div className="grid md:grid-cols-2 h-full">
+                {/* جزء الصورة */}
+                <div className="relative bg-black flex items-center justify-center p-4 min-h-[300px] md:min-h-full">
+                  <div className="relative w-full h-full min-h-[250px]">
+                    <Image
+                      src={selectedCert.img}
+                      alt={selectedCert.title}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
 
-                {/* الجزء الخاص بالبيانات */}
-                <div className="p-8 md:p-12 flex flex-col justify-center border-t md:border-t-0 md:border-l border-white/10">
+                {/* جزء البيانات */}
+                <div className="p-6 md:p-12 flex flex-col justify-center bg-gradient-to-br from-[#0a0a0a] to-[#050505] border-t md:border-t-0 md:border-l border-white/10">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 bg-cyber-cyan/10 rounded-xl text-cyber-cyan">
+                    <div className="p-3 bg-cyber-cyan/10 rounded-xl text-cyber-cyan shadow-[0_0_15px_rgba(0,242,255,0.1)]">
                       <FaAward size={24} />
                     </div>
-                    <span className="text-[10px] font-black tracking-[0.3em] uppercase text-gray-500">Certificate Verified</span>
+                    <span className="text-[10px] font-black tracking-[0.3em] uppercase text-gray-500">Official Credentials</span>
                   </div>
                   
-                  <h2 className="text-3xl font-black mb-4 leading-tight text-white uppercase tracking-tight">
+                  <h2 className="text-2xl md:text-3xl font-black mb-4 leading-tight text-white uppercase tracking-tight">
                     {selectedCert.title}
                   </h2>
                   
-                  <div className="space-y-4 mb-8">
-                    <div>
-                      <p className="text-[10px] font-bold text-cyber-cyan tracking-widest uppercase mb-1 italic">Issued By:</p>
-                      <p className="text-xl text-gray-300 font-bold">{selectedCert.issuer}</p>
+                  <div className="space-y-6 mb-10">
+                    <div className="border-l-2 border-cyber-cyan/30 pl-4">
+                      <p className="text-[10px] font-bold text-cyber-cyan tracking-widest uppercase mb-1 opacity-70">Issuer</p>
+                      <p className="text-lg md:text-xl text-gray-200 font-bold tracking-wide">{selectedCert.issuer}</p>
                     </div>
-                    <div>
-                      <p className="text-[10px] font-bold text-cyber-cyan tracking-widest uppercase mb-1 italic">Date:</p>
-                      <p className="text-xl text-gray-300 font-bold">{selectedCert.date || "N/A"}</p>
+                    <div className="border-l-2 border-white/10 pl-4">
+                      <p className="text-[10px] font-bold text-gray-500 tracking-widest uppercase mb-1">Issue Date</p>
+                      <p className="text-lg md:text-xl text-gray-300 font-bold">{selectedCert.date || "N/A"}</p>
                     </div>
                   </div>
 
                   <button 
                     onClick={() => setSelectedCert(null)}
-                    className="w-full py-4 bg-white/5 border border-white/10 rounded-xl text-xs font-black tracking-widest uppercase hover:bg-cyber-cyan hover:text-black transition-all"
+                    className="w-full py-4 bg-white/5 border border-white/10 rounded-xl text-[10px] font-black tracking-[0.2em] uppercase hover:bg-cyber-cyan hover:text-black transition-all duration-500 group flex items-center justify-center gap-2"
                   >
-                    Close Preview
+                    Close Document
                   </button>
                 </div>
               </div>
@@ -156,8 +161,10 @@ const CertificatesSlider = () => {
       </AnimatePresence>
 
       <style jsx global>{`
-        .swiper-pagination-bullet { background: rgba(255,255,255,0.2) !important; }
-        .swiper-pagination-bullet-active { background: #00f2ff !important; box-shadow: 0 0 10px #00f2ff; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .swiper-pagination-bullet { background: rgba(255,255,255,0.1) !important; width: 12px; height: 4px; border-radius: 2px; transition: all 0.3s; }
+        .swiper-pagination-bullet-active { background: #00f2ff !important; width: 30px; box-shadow: 0 0 10px #00f2ff; }
       `}</style>
     </section>
   );
