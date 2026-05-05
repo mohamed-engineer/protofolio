@@ -15,6 +15,7 @@ const CertificatesSlider = () => {
   const [selectedCert, setSelectedCert] = useState<any>(null);
 
   const certificates = [
+    { title: "EGYPTIANS YOUTH ENTRY certification", img: "/certificates/EYE.jpeg", issuer: "EYE", date: "2025" },
     { title: "First Eid training course", img: "/certificates/EYE&SAVE.jpeg", issuer: "EYE&Save", date: "2025" },
     { title: "Graphic diploma", img: "/certificates/Be Smart.jpeg", issuer: "Be Smart", date: "2024" },
     { title: "Graphic diploma", img: "/certificates/Latin Academy.jpeg", issuer: "Latin Academy", date: "2019" },
