@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from "next/image";
 import { motion } from 'framer-motion';
-import { FaLinkedin, FaGithub, FaTwitter, FaEnvelope } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaFacebook, FaEnvelope } from "react-icons/fa";
 import { Variants } from 'framer-motion'; // تأكد من استيراد النوع
 const Hero = () => {
   const fadeUp: Variants = {
@@ -88,10 +88,10 @@ const Hero = () => {
           className="flex justify-center gap-8 text-gray-500"
         >
           {[
-            { icon: <FaLinkedin />, url: "#" },
-            { icon: <FaGithub />, url: "#" },
-            { icon: <FaTwitter />, url: "#" },
-            { icon: <FaEnvelope />, url: "#" }
+            { icon: <FaLinkedin />, url: "https://www.linkedin.com/in/mohamed-hoosam11/" },
+            { icon: <FaGithub />, url: "http://github.com/mohamed-engineer" },
+            { icon: <FaFacebook />, url: "https://www.facebook.com/mohamed.hossam.167143" },
+            { icon: <FaEnvelope />, url: "mailto:mohamedhossam4work@gmail.com" }
           ].map((social, i) => (
             <a key={i} href={social.url} className="text-xl hover:text-cyber-cyan transition-colors duration-300 hover:scale-120 transform">
               {social.icon}
